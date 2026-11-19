@@ -69,10 +69,10 @@ header .tag i{
 
 /* ---------- герой ---------- */
 .hero{
-  display:flex;align-items:center;gap:44px;
+  display:flex;align-items:flex-start;gap:44px;
   padding:34px 0 44px;
 }
-.robot-zone{position:relative;flex:none}
+.robot-zone{position:relative;flex:none;width:190px;display:flex;flex-direction:column;align-items:center;gap:16px}
 .robot{width:180px;display:block;animation:bob 2.6s ease-in-out infinite;filter:drop-shadow(0 16px 22px rgba(35,40,58,.18))}
 @keyframes bob{50%{transform:translateY(-10px)}}
 .robot .eye{fill:#5ee0ff;animation:blink 4.6s infinite}
@@ -84,15 +84,16 @@ header .tag i{
 .robot .face-s,.robot .face-a,.robot .brow,.robot .steam{display:none}
 
 .bubble{
-  position:absolute;left:calc(100% - 24px);top:-4px;min-width:230px;
+  position:relative;width:100%;min-width:0;height:100px;
+  display:flex;align-items:center;justify-content:center;text-align:center;
   background:var(--card);border:2px solid var(--line);border-radius:18px;
-  padding:12px 16px;font-weight:800;font-size:16px;
+  padding:12px 14px;font-weight:800;font-size:16px;
   box-shadow:0 12px 28px rgba(35,40,58,.10);
   animation:sayFloat 3s ease-in-out infinite;
 }
 .bubble::before{
-  content:"";position:absolute;left:-10px;bottom:20px;
-  border:8px solid transparent;border-right:10px solid var(--line);border-left:0;
+  content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  border:8px solid transparent;border-top:10px solid var(--line);border-bottom:0;
 }
 .bubble .caret{display:inline-block;width:2px;height:1em;background:var(--accent);vertical-align:-2px;margin-left:2px;animation:caret .8s steps(1) infinite}
 @keyframes caret{50%{opacity:0}}
@@ -177,7 +178,7 @@ h2{
 .how{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;
 }
-.how div{
+.how > div{
   background:var(--card);border:2px solid var(--line);border-radius:20px;
   padding:18px 20px;display:flex;gap:14px;align-items:flex-start;
 }
@@ -220,8 +221,7 @@ footer b{color:var(--accent)}
   .hero{flex-direction:column;text-align:center;gap:30px;padding-top:22px}
   .hero p{margin:0 auto}
   .badges{justify-content:center}
-  .bubble{position:static;display:inline-block;margin-bottom:14px;min-width:0}
-  .bubble::before{display:none}
+  .bubble{min-width:0}
 }
 @media (max-width:480px){
   .robot{width:140px}
@@ -279,10 +279,8 @@ footer b{color:var(--accent)}
         ошибайся слишком часто: за ошибки я сержусь, и чем больше ошибок, тем сильнее!
       </p>
       <div class="badges">
-        <span>3 курса</span>
         <span>8–10 классы</span>
         <span>Проверка кода внутри уроков</span>
-        <span>Прогресс сохраняется</span>
       </div>
     </div>
   </div>
